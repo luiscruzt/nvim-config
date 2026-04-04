@@ -15,6 +15,10 @@ vim.opt.smartcase = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.smartindent = true
+vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 vim.filetype.add({ extension = { typ = "typst" } })
 
@@ -107,6 +111,16 @@ require("lazy").setup({
       })
     end
   },
+  {
+      "windwp/nvim-autopairs",
+      config = function()
+          require("nvim-autopairs").setup({
+              check_ts = true,
+              enable_moveright = true,
+              enable_check_bracket_line = true,
+          })
+      end,
+  }
 })
 
 map("n", "-", "<CMD>Oil<CR>")
@@ -114,5 +128,7 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>t", "<cmd>ToggleTerm<cr>")
 map("n", "<leader>e", vim.diagnostic.open_float)
-
+map("n", "<leader>bn", ":bnext<CR>")
+map("n", "<leader>bp", ":bprevious<CR>")
+map("n", "<leader>bd", ":bd<CR>")
 
